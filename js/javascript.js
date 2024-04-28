@@ -1,24 +1,24 @@
-let compChoice = getComputerChoice();
+// let compChoice = getComputerChoice();
 
-console.log(compChoice);
-
-
-//Assign numbers choice of rock, paper, or scissors
-if (compChoice == 1) {
-    console.log("Rock");
-}
-else if (compChoice == 2) {
-    console.log("Paper");
-}
-else {
-    console.log("Scissors");
-}
+console.log(getComputerChoice());
 
 
 
 
-
-//@return A random number of 1, 2, or 3 that will be assigned a choice of rock, paper, or scissors
+//@return A choice of rock, paper, or scissors
+//ranNum is printed for debugging
 function getComputerChoice() {
-    return Math.floor(Math.random () * 3) + 1;
+
+    let ranNum = Math.floor(Math.random () * 3) + 1;
+
+        //Assign numbers choice of rock, paper, or scissors
+    if (ranNum == 1) {
+        return console.log(ranNum, "Rock");
+    }
+    else if (ranNum == 2) {
+        return console.log(ranNum, "Paper");
+    }
+    else {
+        return console.log(ranNum, "Scissors");
+    }
 }
