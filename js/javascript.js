@@ -32,23 +32,24 @@ function getHumanChoice() {
     let humanChoice;
     do {
         humanChoice = window.prompt("Enter Rock, Paper, or Scissors");
+        humanChoice = humanChoice.toLowerCase();
 
-        if (humanChoice == "Rock" || humanChoice == "rock" || humanChoice == "ROCK") {
+        if (humanChoice == "rock") {
             humanChoice = "Rock";
         }
-        else if (humanChoice == "Paper" || humanChoice == "paper" || humanChoice == "PAPER") {
+        else if (humanChoice == "paper") {
             humanChoice = "Paper";
         }
-        else if (humanChoice == "Scissors" || humanChoice == "scissors" || humanChoice == "SCISSORS") {
+        else if (humanChoice == "scissors") {
             humanChoice = "Scissors";
         }
         else {
-            humanChoice = "ERROR Pick one of the provided options";
+            humanChoice = "ERROR";
         }
 
         
     }
-    while (humanChoice === "ERROR Pick one of the provided options");
+    while (humanChoice === "ERROR");
 
     return humanChoice;
 
