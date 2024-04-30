@@ -1,6 +1,9 @@
-// let compChoice = getComputerChoice();
+console.log("User Choice:",getHumanChoice());
 
-console.log(getComputerChoice());
+console.log("");
+
+console.log("Computer Choice", getComputerChoice());
+
 
 
 
@@ -10,15 +13,47 @@ console.log(getComputerChoice());
 function getComputerChoice() {
 
     let ranNum = Math.floor(Math.random () * 3) + 1;
+    let compChoice;
 
         //Assign numbers choice of rock, paper, or scissors
     if (ranNum == 1) {
-        return console.log(ranNum, "Rock");
+        compChoice = "Rock";
     }
     else if (ranNum == 2) {
-        return console.log(ranNum, "Paper");
+        compChoice = "Paper";
     }
     else {
-        return console.log(ranNum, "Scissors");
+        compChoice = "Scissors";
     }
+
+    return compChoice/** + " " + ranNum */; //comment used for debugging
+}
+
+//@return The users choice
+function getHumanChoice() {
+    let humanChoice;
+    do {
+        humanChoice = window.prompt("Enter Rock, Paper, or Scissors");
+
+        if (humanChoice == "Rock" || humanChoice == "rock" || humanChoice == "ROCK") {
+            humanChoice = "Rock";
+        }
+        else if (humanChoice == "Paper" || humanChoice == "paper" || humanChoice == "PAPER") {
+            humanChoice = "Paper";
+        }
+        else if (humanChoice == "Scissors" || humanChoice == "scissors" || humanChoice == "SCISSORS") {
+            humanChoice = "Scissors";
+        }
+        else {
+            humanChoice = "ERROR Pick one of the provided options";
+        }
+
+        
+    }
+    while (humanChoice === "ERROR Pick one of the provided options");
+
+    return humanChoice;
+
+    
+    
 }
