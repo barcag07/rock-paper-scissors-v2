@@ -1,11 +1,9 @@
-console.log("User Choice:",getHumanChoice());
+//Set scores to keep track of wins
+let humanScore = 0;
+let computerScore = 0;
 
-console.log("");
-
-console.log("Computer Choice", getComputerChoice());
-
-
-
+//getHUmanChoice() -> humanChoice param & getComputerChoice() -> compChoice param
+console.log(playRound(getHumanChoice(), getComputerChoice()));
 
 
 //@return A choice of rock, paper, or scissors
@@ -54,6 +52,20 @@ function getHumanChoice() {
 
     return humanChoice;
 
-    
-    
+}
+
+
+/**
+ * playRound function plays a round of rock paper scissors
+ * @param humanChoice The user's choice
+ * @param compChoice The computer's randomly generated choice
+ */
+
+function playRound(humanChoice, compChoice) {
+
+    console.log("User Choice:",humanChoice);
+
+    console.log("Computer Choice", compChoice);
+
+    console.log("");
 }
