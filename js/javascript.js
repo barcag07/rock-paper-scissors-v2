@@ -1,12 +1,8 @@
-//Set scores to keep track of wins
-let humanScore = 0;
-let computerScore = 0;
+let humanScore = 0; // set human initializer to 0
+let computerScore = 0; // set computer initializer to 0
+let round = 1; // set round initializer to 0
 
-//getHUmanChoice() -> humanChoice param & getComputerChoice() -> compChoice param
-
-console.log(playRound(getHumanChoice(), getComputerChoice()));
-console.log("Score\nUser: " + humanScore + "\tComputer: " + computerScore);
-
+playGame();
 
 //@return A choice of rock, paper, or scissors
 //ranNum is printed for debugging
@@ -33,7 +29,7 @@ function getComputerChoice() {
 function getHumanChoice() {
     let humanChoice;
     do {
-        humanChoice = window.prompt("Enter Rock, Paper, or Scissors");
+        humanChoice = window.prompt("ROUND: " + round + "\nEnter Rock, Paper, or Scissors");
         humanChoice = humanChoice.toLowerCase();
 
         if (humanChoice == "rock") {
@@ -62,11 +58,11 @@ function getHumanChoice() {
  * playRound function plays a round of rock paper scissors
  * @param humanChoice The user's choice
  * @param compChoice The computer's randomly generated choice
+ * @return returns the outcome of the round
  */
 
 function playRound(humanChoice, compChoice) {
 
-    let result;
 
     console.log("User Choice:",humanChoice);
 
@@ -91,9 +87,43 @@ function playRound(humanChoice, compChoice) {
             humanChoice === "Scissors" && compChoice === "Scissors") {
                 humanScore += 0;
                 computerScore += 0;
-                return console.log("Looks like a tie. Nobody wins");
+                return console.log("Looks like a tie. Nobody wins this round");
             }
     else {
         return null;
+    }
+}
+
+
+/**
+ * playGame function plays 5 rounds of rock paper scissors
+ * @return The outcome of the game
+ */
+
+
+function playGame() {
+
+
+    for (round = 1; round <= 5; round++) {
+        console.log("ROUND: " + round);
+        
+        //getHUmanChoice() -> humanChoice param & getComputerChoice() -> compChoice param
+
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
+        console.log("Score\nUser: " + humanScore + "\tComputer: " + computerScore);
+        
+        console.log("");
+        console.log("");
+        console.log("");
+    }
+
+    if (humanScore > computerScore) {
+        console.log("CONGRATULATIONS!! YOU BEAT THE COMPUTER!");
+    }
+    else if (humanScore < computerScore) {
+        console.log("Sorry...The computer won the game")
+    }
+    else {
+        console.log("Looks like nobody wins. The game ends in a tie");
     }
 }
