@@ -3,7 +3,9 @@ let humanScore = 0;
 let computerScore = 0;
 
 //getHUmanChoice() -> humanChoice param & getComputerChoice() -> compChoice param
+
 console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log("Score\nUser: " + humanScore + "\tComputer: " + computerScore);
 
 
 //@return A choice of rock, paper, or scissors
@@ -64,9 +66,34 @@ function getHumanChoice() {
 
 function playRound(humanChoice, compChoice) {
 
+    let result;
+
     console.log("User Choice:",humanChoice);
 
     console.log("Computer Choice", compChoice);
 
     console.log("");
+
+    if (humanChoice === "Rock" && compChoice === "Scissors" ||
+        humanChoice === "Paper" && compChoice === "Rock" ||
+        humanChoice === "Scissors" && compChoice === "Paper") {
+            humanScore++;
+            return console.log("Congratulations! You win this round");
+        }
+    else if (humanChoice === "Rock" && compChoice === "Paper" ||
+            humanChoice === "Paper" && compChoice === "Scissors" ||
+            humanChoice === "Scissors" && compChoice === "Rock") {
+                computerScore++;
+                return console.log("Sorry...The computer wins this round");
+        }
+    else if (humanChoice === "Rock" && compChoice === "Rock" ||
+            humanChoice === "Paper" && compChoice === "Paper" ||
+            humanChoice === "Scissors" && compChoice === "Scissors") {
+                humanScore += 0;
+                computerScore += 0;
+                return console.log("Looks like a tie. Nobody wins");
+            }
+    else {
+        return null;
+    }
 }
