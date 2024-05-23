@@ -2,7 +2,7 @@ let humanScore = 0; // set human initializer to 0
 let computerScore = 0; // set computer initializer to 0
 let round = 1; // set round initializer to 0
 
-playGame();
+// playGame();
 
 //@return A choice of rock, paper, or scissors
 //ranNum is printed for debugging
@@ -101,29 +101,64 @@ function playRound(humanChoice, compChoice) {
  */
 
 
-function playGame() {
+// function playGame() {
 
 
-    for (round = 1; round <= 5; round++) {
-        console.log("ROUND: " + round);
+//     for (round = 1; round <= 5; round++) {
+//         console.log("ROUND: " + round);
         
-        //getHUmanChoice() -> humanChoice param & getComputerChoice() -> compChoice param
+//         //getHUmanChoice() -> humanChoice param & getComputerChoice() -> compChoice param
 
-        console.log(playRound(getHumanChoice(), getComputerChoice()));
-        console.log("Score\nUser: " + humanScore + "\tComputer: " + computerScore);
+//         console.log(playRound(getHumanChoice(), getComputerChoice()));
+//         console.log("Score\nUser: " + humanScore + "\tComputer: " + computerScore);
         
-        console.log("");
-        console.log("");
-        console.log("");
-    }
+//         console.log("");
+//         console.log("");
+//         console.log("");
+//     }
 
-    if (humanScore > computerScore) {
-        console.log("CONGRATULATIONS!! YOU BEAT THE COMPUTER!");
-    }
-    else if (humanScore < computerScore) {
-        console.log("Sorry...The computer won the game")
-    }
-    else {
-        console.log("Looks like nobody wins. The game ends in a tie");
-    }
-}
+//     if (humanScore > computerScore) {
+//         console.log("CONGRATULATIONS!! YOU BEAT THE COMPUTER!");
+//     }
+//     else if (humanScore < computerScore) {
+//         console.log("Sorry...The computer won the game")
+//     }
+//     else {
+//         console.log("Looks like nobody wins. The game ends in a tie");
+//     }
+// }
+
+const body = document.querySelector("body");
+
+const rps = document.querySelector("div");
+
+const rock = document.createElement("button");
+rock.textContent = "Rock";
+rock.addEventListener("click", () => {
+    playRound(rock.textContent);
+});
+rps.appendChild(rock);
+
+const paper = document.createElement("button");
+paper.textContent = "Paper";
+paper.addEventListener("click", () => {
+    playRound(paper.textContent);
+});
+rps.appendChild(paper);
+
+const scissors = document.createElement("button");
+scissors.textContent = "Scissors";
+scissors.addEventListener("click", () => {
+    playRound(scissors.textContent);
+});
+rps.appendChild(scissors);
+
+body.appendChild(rps);
+
+
+
+const results = document.createElement("div");
+results.setAttribute("class", "results")
+
+
+body.appendChild(results);
