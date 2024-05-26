@@ -2,14 +2,20 @@ let humanScore = 0; // set human initializer to 0
 let computerScore = 0; // set computer initializer to 0
 let round = 1; // set round initializer to 0
 
+let wlt = "";
+// let win = "Congratulations! You win this round\n\n";
+// let lose = "Sorry...The computer wins this round\n\n";
+// let tie = "Looks like a tie. Nobody wins this round";
+
 // playGame();
 
 //@return A choice of rock, paper, or scissors
 //ranNum is printed for debugging
+let compChoice = "";
 function getComputerChoice() {
 
     let ranNum = Math.floor(Math.random () * 3) + 1;
-    let compChoice;
+    // let compChoice;
 
         //Assign numbers choice of rock, paper, or scissors
     if (ranNum == 1) {
@@ -61,34 +67,44 @@ function getHumanChoice() {
  * @return returns the outcome of the round
  */
 
+   
+
+
 function playRound(humanChoice, compChoice) {
 
 
     console.log("User Choice:",humanChoice);
 
-    console.log("Computer Choice", compChoice);
+    console.log("Computer Choice:", compChoice);
 
     console.log("");
+
+    let win = "Congratulations! You win this round\n\n";
+    let lose = "Sorry...The computer wins this round\n\n";
+    let tie = "Looks like a tie. Nobody wins this round";
 
     if (humanChoice === "Rock" && compChoice === "Scissors" ||
         humanChoice === "Paper" && compChoice === "Rock" ||
         humanChoice === "Scissors" && compChoice === "Paper") {
             humanScore++;
-            return console.log("Congratulations! You win this round");
+
+            return wlt = win;
+
         }
     else if (humanChoice === "Rock" && compChoice === "Paper" ||
             humanChoice === "Paper" && compChoice === "Scissors" ||
             humanChoice === "Scissors" && compChoice === "Rock") {
                 computerScore++;
-                return console.log("Sorry...The computer wins this round");
+                return wlt = lose;
         }
     else if (humanChoice === "Rock" && compChoice === "Rock" ||
             humanChoice === "Paper" && compChoice === "Paper" ||
             humanChoice === "Scissors" && compChoice === "Scissors") {
                 humanScore += 0;
                 computerScore += 0;
-                return console.log("Looks like a tie. Nobody wins this round");
+                return wlt = tie;
             }
+
     else {
         return null;
     }
@@ -128,28 +144,55 @@ function playRound(humanChoice, compChoice) {
 //     }
 // }
 
+// function checkGame(round) {
+//     while(round > 5) {
+//         rock.disabled = true;
+//         paper.disable = true;
+//         rock.disable = true;
+//     }
+// }
+
 const body = document.querySelector("body");
 
 const rps = document.querySelector("div");
 
+let userChoice = "";
 const rock = document.createElement("button");
 rock.textContent = "Rock";
 rock.addEventListener("click", () => {
-    playRound(rock.textContent);
+    userChoice = rock.textContent;
+    getComputerChoice();
+    userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked:${compChoice}`;
+    playRound(rock.textContent, compChoice);
+    outcome.innerHTML = `Results: ${wlt}`;
+    score.innerHTML = `ROUND ${round}`;
+    round++;
 });
 rps.appendChild(rock);
 
 const paper = document.createElement("button");
 paper.textContent = "Paper";
 paper.addEventListener("click", () => {
-    playRound(paper.textContent);
+    userChoice = paper.textContent;
+    getComputerChoice();
+    userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked:${compChoice}`;
+    playRound(paper.textContent, compChoice);
+    outcome.innerHTML = `Results: ${wlt}`;
+    score.innerHTML = `ROUND ${round}`
+    round++;
 });
 rps.appendChild(paper);
 
 const scissors = document.createElement("button");
 scissors.textContent = "Scissors";
 scissors.addEventListener("click", () => {
-    playRound(scissors.textContent);
+    userChoice = scissors.textContent;
+    getComputerChoice();
+    userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked: ${compChoice}`;
+    playRound(scissors.textContent,compChoice);
+    outcome.innerHTML = `Results: ${wlt}`;
+    score.innerHTML = `ROUND ${round}`;
+    round++;
 });
 rps.appendChild(scissors);
 
@@ -159,6 +202,22 @@ body.appendChild(rps);
 
 const results = document.createElement("div");
 results.setAttribute("class", "results")
+
+
+const userCompChoice = document.createElement("p");
+//innerHTML was used so that we can create a line break
+userCompChoice.innerHTML = `You Picked:</br>The Computer Picked:`;
+results.appendChild(userCompChoice);
+
+const outcome = document.createElement("p");
+outcome.textContent = "Results:";
+results.appendChild(outcome);
+
+const score = document.createElement("p");
+// score.innerHTML =  `ROUND ${round}<br>User Score: ${humanScore}&nbsp;Computer Score: ${computerScore}`;
+
+score.innerHTML = `ROUND 1`;
+results.appendChild(score);
 
 
 body.appendChild(results);
