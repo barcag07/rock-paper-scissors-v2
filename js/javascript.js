@@ -165,7 +165,8 @@ if(round <= 5) {
         userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked: ${compChoice}`;
         playRound(rock.textContent, compChoice);
         score.innerHTML = `ROUND ${round}`;
-        outcome.innerHTML = `Results: ${wlt}`;
+        roundOutcome.innerHTML = `Round Results: ${wlt}`;
+        tally.innerHTML = `USER POINTS: ${humanScore}&nbsp;COMPUTER POINTS: ${computerScore}`;
         round++;
         checkGame(round);
     });
@@ -182,7 +183,8 @@ if (round <= 5) {
     userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked: ${compChoice}`;
     playRound(paper.textContent, compChoice);
     score.innerHTML = `ROUND ${round}`;
-    outcome.innerHTML = `Results: ${wlt}`;
+    roundOutcome.innerHTML = `Round Results: ${wlt}`;
+    tally.innerHTML = `USER POINTS: ${humanScore}&nbsp;COMPUTER POINTS: ${computerScore}`;
     round++;
     checkGame(round);
 });
@@ -199,7 +201,8 @@ if (round <= 5) {
     userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked: ${compChoice}`;
     playRound(scissors.textContent,compChoice);
     score.innerHTML = `ROUND ${round}`;
-    outcome.innerHTML = `Results: ${wlt}`;
+    roundOutcome.innerHTML = `Round Results: ${wlt}`;
+    tally.innerHTML = `USER POINTS: ${humanScore}&nbsp;COMPUTER POINTS: ${computerScore}`;
     round++;
     checkGame(round);
     });
@@ -224,12 +227,14 @@ userCompChoice.innerHTML = `You Picked:</br>The Computer Picked:`;
 results.appendChild(userCompChoice);
 
 
-const outcome = document.createElement("p");
-outcome.textContent = "Results:";
-results.appendChild(outcome);
+const roundOutcome = document.createElement("p");
+roundOutcome.textContent = "Round Results:";
+results.appendChild(roundOutcome);
 
-// score.innerHTML =  `ROUND ${round}<br>User Score: ${humanScore}&nbsp;Computer Score: ${computerScore}`;
-
+const tally = document.createElement("p");
+tally.innerHTML = `USER POINTS: 0 &nbsp; COMPUTER POINTS: 0`;
+// tally.innerHTML = `USER POINTS: ${}&nbsp;COMPUTER POINTS: ${}`;
+results.appendChild(tally);
 
 
 body.appendChild(results);
