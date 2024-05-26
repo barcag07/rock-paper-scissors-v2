@@ -148,7 +148,18 @@ function checkGame(round) {
         rock.disabled = true;
         paper.disabled = true;
         scissors.disabled = true;
+
+        if(humanScore > computerScore) {
+            finalOutcome.textContent = "CONGRATULATIONS!! YOU BEAT THE COMPUTER!";
+        }
+        else if (humanScore < computerScore) {
+            finalOutcome.textContent = "Sorry...The computer won the game";
+        }
+        else {
+            finalOutcome.textContent = "Looks like nobody wins. The game ends in a tie."
+        }
     }
+    
 }
 
 const body = document.querySelector("body");
@@ -236,5 +247,19 @@ tally.innerHTML = `USER POINTS: 0 &nbsp; COMPUTER POINTS: 0`;
 // tally.innerHTML = `USER POINTS: ${}&nbsp;COMPUTER POINTS: ${}`;
 results.appendChild(tally);
 
+const finalOutcome = document.createElement("p");
+finalOutcome.innerHTML = ""
+
+// if(humanScore > computerScore) {
+//     finalOutcome.textContent = "CONGRATULATIONS!! YOU BEAT THE COMPUTER!";
+// }
+// else if (humanScore < computerScore) {
+//     finalOutcome.textContent = "Sorry...The computer won the game";
+// }
+// else {
+//     finalOutcome.textContent = "Looks like nobody wins. The game ends in a tie."
+// }
+
+results.appendChild(finalOutcome);
 
 body.appendChild(results);
