@@ -143,14 +143,13 @@ function playRound(humanChoice, compChoice) {
 //         console.log("Looks like nobody wins. The game ends in a tie");
 //     }
 // }
-
-// function checkGame(round) {
-//     while(round > 5) {
-//         rock.disabled = true;
-//         paper.disable = true;
-//         rock.disable = true;
-//     }
-// }
+function checkGame(round) {
+    if (round > 5) {
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+    }
+}
 
 const body = document.querySelector("body");
 
@@ -159,41 +158,53 @@ const rps = document.querySelector("div");
 let userChoice = "";
 const rock = document.createElement("button");
 rock.textContent = "Rock";
-rock.addEventListener("click", () => {
-    userChoice = rock.textContent;
-    getComputerChoice();
-    userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked:${compChoice}`;
-    playRound(rock.textContent, compChoice);
-    outcome.innerHTML = `Results: ${wlt}`;
-    score.innerHTML = `ROUND ${round}`;
-    round++;
-});
+if(round <= 5) {
+    rock.addEventListener("click", () => {
+        userChoice = rock.textContent;
+        getComputerChoice();
+        userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked: ${compChoice}`;
+        playRound(rock.textContent, compChoice);
+        score.innerHTML = `ROUND ${round}`;
+        outcome.innerHTML = `Results: ${wlt}`;
+        round++;
+        checkGame(round);
+    });
+}
+
 rps.appendChild(rock);
 
 const paper = document.createElement("button");
 paper.textContent = "Paper";
-paper.addEventListener("click", () => {
+if (round <= 5) {
+    paper.addEventListener("click", () => {
     userChoice = paper.textContent;
     getComputerChoice();
-    userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked:${compChoice}`;
+    userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked: ${compChoice}`;
     playRound(paper.textContent, compChoice);
+    score.innerHTML = `ROUND ${round}`;
     outcome.innerHTML = `Results: ${wlt}`;
-    score.innerHTML = `ROUND ${round}`
     round++;
+    checkGame(round);
 });
+}
+
 rps.appendChild(paper);
 
 const scissors = document.createElement("button");
 scissors.textContent = "Scissors";
-scissors.addEventListener("click", () => {
+if (round <= 5) {
+    scissors.addEventListener("click", () => {
     userChoice = scissors.textContent;
     getComputerChoice();
     userCompChoice.innerHTML = `You Picked: ${userChoice}<br>The Computer Picked: ${compChoice}`;
     playRound(scissors.textContent,compChoice);
-    outcome.innerHTML = `Results: ${wlt}`;
     score.innerHTML = `ROUND ${round}`;
+    outcome.innerHTML = `Results: ${wlt}`;
     round++;
-});
+    checkGame(round);
+    });
+}
+
 rps.appendChild(scissors);
 
 body.appendChild(rps);
@@ -203,21 +214,22 @@ body.appendChild(rps);
 const results = document.createElement("div");
 results.setAttribute("class", "results")
 
+const score = document.createElement("p");
+score.innerHTML = `ROUND 1`;
+results.appendChild(score);
 
 const userCompChoice = document.createElement("p");
 //innerHTML was used so that we can create a line break
 userCompChoice.innerHTML = `You Picked:</br>The Computer Picked:`;
 results.appendChild(userCompChoice);
 
+
 const outcome = document.createElement("p");
 outcome.textContent = "Results:";
 results.appendChild(outcome);
 
-const score = document.createElement("p");
 // score.innerHTML =  `ROUND ${round}<br>User Score: ${humanScore}&nbsp;Computer Score: ${computerScore}`;
 
-score.innerHTML = `ROUND 1`;
-results.appendChild(score);
 
 
 body.appendChild(results);
